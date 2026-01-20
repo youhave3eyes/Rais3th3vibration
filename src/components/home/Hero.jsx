@@ -51,7 +51,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               <h1 className="hero-title-modern">
-                <span className="title-line">RAIS3 TH3</span>
+                <span className="title-line">RAIS3 TH3 </span>
                 <span className="title-line gradient-text">VIBRATION</span>
               </h1>
             </motion.div>

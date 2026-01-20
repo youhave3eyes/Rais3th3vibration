@@ -294,7 +294,7 @@ const MatrixNavbar = () => {
             borderRadius: '10px'
           }}
         >
-          {navItems.map((item, index) => (
+          {[...primaryNavItems, ...moreNavItems].map((item, index) => (
             <Link
               key={item.path}
               to={item.path}
@@ -329,8 +329,11 @@ const MatrixNavbar = () => {
           <motion.button
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: navItems.length * 0.1 }}
-            onClick={handleRabbitHoleClick}
+            transition={{ delay: [...primaryNavItems, ...moreNavItems].length * 0.1 }}
+            onClick={() => {
+              setIsOpen(false)
+              handleRabbitHoleClick()
+            }}
             className="awakening-btn pulse-glow"
             style={{
               width: '100%',

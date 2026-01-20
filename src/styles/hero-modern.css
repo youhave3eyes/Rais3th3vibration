@@ -91,20 +91,17 @@
 
 /* Title with 3D Effect */
 .hero-title-modern {
-  /* Force single-line title */
   font-size: clamp(2.2rem, 5.5vw, 4.2rem);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.15;
   margin: 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: baseline;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 0.45em;
-  white-space: nowrap;
   padding-top: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .title-line {
@@ -445,7 +442,7 @@
 @media (max-width: 1024px) {
   .hero-layout-modern {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
     text-align: center;
   }
   
@@ -463,32 +460,49 @@
   }
   
   .hero-visual-modern {
-    min-height: 400px;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   
   .orb-container {
-    width: 350px;
-    height: 350px;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
   }
   
   .energy-orb-modern {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
   }
   
-  .ring-1 { width: 300px; height: 300px; }
-  .ring-2 { width: 240px; height: 240px; }
-  .ring-3 { width: 180px; height: 180px; }
-  .orb-core { width: 120px; height: 120px; }
+  .ring-1 { width: 280px; height: 280px; }
+  .ring-2 { width: 220px; height: 220px; }
+  .ring-3 { width: 160px; height: 160px; }
+  .orb-core { width: 110px; height: 110px; }
 }
 
 @media (max-width: 768px) {
+  .hero-modern {
+    padding-top: 80px;
+  }
+  
   .hero-title-modern {
-    font-size: clamp(2rem, 10vw, 3.5rem);
+    font-size: clamp(1.8rem, 10vw, 3rem);
+    justify-content: center;
+    text-align: center;
+    gap: 0.3em;
+  }
+  
+  .title-line {
+    display: inline-block;
   }
   
   .hero-description-modern {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem !important;
   }
   
   .hero-stats {
@@ -517,20 +531,35 @@
     font-size: 2rem;
   }
   
+  .hero-visual-modern {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
   .orb-container {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    position: relative;
   }
   
   .energy-orb-modern {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
   
-  .ring-1 { width: 200px; height: 200px; }
-  .ring-2 { width: 160px; height: 160px; }
-  .ring-3 { width: 120px; height: 120px; }
-  .orb-core { width: 80px; height: 80px; }
+  .ring-1 { width: 220px; height: 220px; }
+  .ring-2 { width: 170px; height: 170px; }
+  .ring-3 { width: 130px; height: 130px; }
+  .orb-core { width: 90px; height: 90px; }
+  
+  .floating-matrix-number {
+    font-size: 20px !important;
+  }
 }
 
 /* Performance Optimization */
