@@ -19,5 +19,22 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- GitHub Pages SPA deep-link restore -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search)
+        var p = params.get('p')
+        if (p) {
+          try {
+            var target = decodeURIComponent(p)
+            window.history.replaceState(null, '', target)
+          } catch (e) {
+            // ignore
+          }
+        }
+      })()
+    </script>
+
   </body>
 </html>
