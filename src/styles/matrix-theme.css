@@ -444,3 +444,47 @@ a:hover {
 a:hover::after {
   width: 100%;
 }
+
+/* ==================== */
+/* MOBILE RESPONSIVE MATRIX THEME */
+/* ==================== */
+
+@media (max-width: 768px) {
+  /* Responsive Typography */
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.5rem; }
+  
+  /* Prevent text overflow */
+  p, li, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Adjust matrix rain for mobile performance */
+  .matrix-bg canvas {
+    opacity: 0.15;
+  }
+  
+  /* Optimize consciousness cards for mobile */
+  .consciousness-card {
+    padding: 1.25rem;
+  }
+  
+  /* Make nav links more touch-friendly */
+  .nav-link {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  
+  .consciousness-card {
+    padding: 1rem;
+  }
+}
