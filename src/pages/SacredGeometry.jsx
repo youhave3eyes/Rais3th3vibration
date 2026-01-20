@@ -184,7 +184,7 @@ const SacredGeometry = () => {
     >
       <MatrixRain color="#9D4EDD" glowColor="#C77DFF" />
 
-      <header style={{ paddingTop: '110px', paddingBottom: '2.5rem' }}>
+      <header className="sacred-geo-header" style={{ paddingTop: '110px', paddingBottom: '2.5rem' }}>
         <style>{`
           @media (max-width: 480px) {
             .sacred-geo-header {
@@ -192,7 +192,6 @@ const SacredGeometry = () => {
             }
           }
         `}</style>
-        <div className="sacred-geo-header" style={{ paddingTop: 0 }} />
         <div className="container" style={{ textAlign: 'center' }}>
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
