@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/rtv33-react/',
+  base: '/Rais3th3vibration/',
   plugins: [react()],
   server: {
     port: 4747,
