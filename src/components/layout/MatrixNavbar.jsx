@@ -103,8 +103,26 @@ const MatrixNavbar = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}
           >
+            {/* Brand mark (place file at: public/rtv33-logo.png) */}
+            <img
+              src="/rtv33-logo.png"
+              alt="RTV33"
+              loading="eager"
+              style={{
+                height: '28px',
+                width: 'auto',
+                display: 'block',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 0 10px rgba(156, 39, 176, 0.55))'
+              }}
+              onError={(e) => {
+                // If the logo file is missing, hide the broken image icon.
+                e.currentTarget.style.display = 'none'
+              }}
+            />
+
             <span className="glitch-text" data-text="RTV33" style={{ 
               fontSize: '1.6rem', 
               fontWeight: 'bold',
@@ -112,6 +130,8 @@ const MatrixNavbar = () => {
             }}>
               RTV33
             </span>
+
+            {/* Keep the original orb for the same vibe */}
             <span className="mystical-orb" style={{ 
               width: '24px', 
               height: '24px',
