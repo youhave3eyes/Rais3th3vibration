@@ -36,6 +36,7 @@ const MatrixNavbar = () => {
   ]
 
   const moreNavItems = [
+    { path: '/sacred-geometry', label: 'SACRED GEOMETRY', icon: '✡️' },
     { path: '/ormus', label: 'ORMUS', icon: '✨' },
     { path: '/tesla', label: 'TESLA', icon: '⚡' },
     { path: '/contact', label: 'ET CONTACT', icon: '👽' },

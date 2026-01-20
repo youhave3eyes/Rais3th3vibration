@@ -20,6 +20,7 @@ import ETContact from './pages/ETContact'
 import PlantMedicine from './pages/PlantMedicine'
 import OrganicLiving from './pages/OrganicLiving'
 import EarthShape from './pages/EarthShape'
+import SacredGeometry from './pages/SacredGeometry'
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path="/medicine" element={<PlantMedicine />} />
               <Route path="/organic" element={<OrganicLiving />} />
               <Route path="/earth-shape" element={<EarthShape />} />
+              <Route path="/sacred-geometry" element={<SacredGeometry />} />
             </Routes>
           </AnimatePresence>
           <Footer />
