@@ -8,42 +8,7 @@ import LearningPaths from '../components/knowledge/LearningPaths'
 import VideoLibrary from '../components/knowledge/VideoLibrary'
 import KnowledgeGrid from '../components/knowledge/KnowledgeGrid'
 
-const Knowledge = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [activeCategory, setActiveCategory] = useState('all')
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="scanline"
-      style={{ position: 'relative', background: '#000000', minHeight: '100vh' }}
-    >
-      <MatrixRain color="#9D4EDD" glowColor="#C77DFF" />
-      <KnowledgeHero />
-      <FeaturedContent />
-      <SearchFilter 
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
-      <LearningPaths />
-      <VideoLibrary />
-      <KnowledgeGrid 
-        searchTerm={searchTerm}
-        activeCategory={activeCategory}
-      />
-      
-      {/* Consciousness Expansion Topics Section */}
-      <ConsciousnessTopics />
-    </motion.div>
-  )
-}
-
-// New Consciousness Expansion Topics Component
+// Consciousness Expansion Topics Component
 const ConsciousnessTopics = () => {
   const topics = [
     {
@@ -181,6 +146,41 @@ const ConsciousnessTopics = () => {
         </div>
       </div>
     </section>
+  )
+}
+
+const Knowledge = () => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [activeCategory, setActiveCategory] = useState('all')
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="scanline"
+      style={{ position: 'relative', background: '#000000', minHeight: '100vh' }}
+    >
+      <MatrixRain color="#9D4EDD" glowColor="#C77DFF" />
+      <KnowledgeHero />
+      <FeaturedContent />
+      <SearchFilter 
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
+      <LearningPaths />
+      <VideoLibrary />
+      <KnowledgeGrid 
+        searchTerm={searchTerm}
+        activeCategory={activeCategory}
+      />
+      
+      {/* Consciousness Expansion Topics Section */}
+      <ConsciousnessTopics />
+    </motion.div>
   )
 }
 

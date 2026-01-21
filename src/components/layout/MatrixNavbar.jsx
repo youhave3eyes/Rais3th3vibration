@@ -5,7 +5,26 @@ import { motion } from 'framer-motion'
 const MatrixNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isMoreOpen, setIsMoreOpen] = useState(false)
   const location = useLocation()
+
+  const primaryNavItems = [
+    { path: '/', label: 'AWAKENING', icon: '👁️' },
+    { path: '/knowledge', label: 'KNOWLEDGE', icon: '📚' },
+    { path: '/community', label: 'CONSCIOUSNESS', icon: '🌐' },
+    { path: '/music', label: 'FREQUENCIES', icon: '🎵' },
+    { path: '/shop', label: 'TEMPLE GOODS', icon: '🛒' },
+  ]
+
+  const moreNavItems = [
+    { path: '/sacred-geometry', label: 'SACRED GEOMETRY', icon: '✡️' },
+    { path: '/ormus', label: 'ORMUS', icon: '✨' },
+    { path: '/tesla', label: 'TESLA', icon: '⚡' },
+    { path: '/contact', label: 'ET CONTACT', icon: '👽' },
+    { path: '/medicine', label: 'PLANT MEDICINE', icon: '🍄' },
+    { path: '/organic', label: 'ORGANIC LIVING', icon: '🌿' },
+    { path: '/earth-shape', label: 'EARTH SHAPE', icon: '🌍' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,26 +45,6 @@ const MatrixNavbar = () => {
       document.removeEventListener('click', handleDocClick)
     }
   }, [])
-
-  const primaryNavItems = [
-    { path: '/', label: 'AWAKENING', icon: '👁️' },
-    { path: '/knowledge', label: 'KNOWLEDGE', icon: '📚' },
-    { path: '/community', label: 'CONSCIOUSNESS', icon: '🌐' },
-    { path: '/music', label: 'FREQUENCIES', icon: '🎵' },
-    { path: '/shop', label: 'TEMPLE GOODS', icon: '🛒' },
-  ]
-
-  const moreNavItems = [
-    { path: '/sacred-geometry', label: 'SACRED GEOMETRY', icon: '✡️' },
-    { path: '/ormus', label: 'ORMUS', icon: '✨' },
-    { path: '/tesla', label: 'TESLA', icon: '⚡' },
-    { path: '/contact', label: 'ET CONTACT', icon: '👽' },
-    { path: '/medicine', label: 'PLANT MEDICINE', icon: '🍄' },
-    { path: '/organic', label: 'ORGANIC LIVING', icon: '🌿' },
-    { path: '/earth-shape', label: 'EARTH SHAPE', icon: '🌍' },
-  ]
-
-  const [isMoreOpen, setIsMoreOpen] = useState(false)
 
   const handleRabbitHoleClick = () => {
     const rabbitHoleSection = document.getElementById('rabbit-hole')
@@ -188,7 +187,20 @@ const MatrixNavbar = () => {
              whileHover={{ scale: 1.05 }}
              whileTap={{ scale: 0.95 }}
              onClick={() => setIsMoreOpen((v) => !v)}
+             onKeyDown={(e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                 e.preventDefault()
+                 setIsMoreOpen((v) => !v)
+               }
+               if (e.key === 'Escape' && isMoreOpen) {
+                 e.preventDefault()
+                 setIsMoreOpen(false)
+               }
+             }}
              className={isMoreOpen ? 'awakening-btn pulse-glow' : 'awakening-btn'}
+             aria-label="More navigation options"
+             aria-expanded={isMoreOpen}
+             aria-controls="more-dropdown-menu"
              style={{
                padding: '0.35rem 0.65rem',
                fontSize: '0.7rem',
@@ -200,6 +212,8 @@ const MatrixNavbar = () => {
 
            {isMoreOpen && (
              <div
+               id="more-dropdown-menu"
+               role="menu"
                style={{
                  position: 'absolute',
                  top: 'calc(100% + 10px)',
@@ -282,7 +296,16 @@ const MatrixNavbar = () => {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(!isOpen)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              setIsOpen(!isOpen)
+            }
+          }}
           className="mobile-menu-btn"
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-menu"
           style={{
             display: 'none',
             background: 'transparent',
@@ -304,10 +327,13 @@ const MatrixNavbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
+          id="mobile-nav-menu"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           className="mobile-nav neon-border"
+          role="navigation"
+          aria-label="Mobile navigation menu"
           style={{
             marginTop: '1rem',
             padding: '2rem',
