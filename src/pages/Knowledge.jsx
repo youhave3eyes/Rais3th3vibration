@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import MatrixRain from '../components/effects/MatrixRain'
 import KnowledgeHero from '../components/knowledge/KnowledgeHero'
 import FeaturedContent from '../components/knowledge/FeaturedContent'
@@ -7,60 +8,10 @@ import SearchFilter from '../components/knowledge/SearchFilter'
 import LearningPaths from '../components/knowledge/LearningPaths'
 import VideoLibrary from '../components/knowledge/VideoLibrary'
 import KnowledgeGrid from '../components/knowledge/KnowledgeGrid'
+import { knowledgePortalTopics } from '../data/knowledgeData'
 
-// Consciousness Expansion Topics Component
-const ConsciousnessTopics = () => {
-  const topics = [
-    {
-      title: 'Monatomic Gold & ORMUS',
-      icon: '✨',
-      description: 'Explore the mystical properties of monoatomic elements and their potential effects on consciousness',
-      color: '#FFD700'
-    },
-    {
-      title: 'Scalar Energy & Tachyon Fields',
-      icon: '⚡',
-      description: 'Understanding non-Hertzian frequencies and their role in energy manipulation',
-      color: '#00D9FF'
-    },
-    {
-      title: 'Free Energy Technologies',
-      icon: '🔋',
-      description: 'Nikola Tesla and zero-point energy principles for sustainable consciousness evolution',
-      color: '#FF6B9D'
-    },
-    {
-      title: 'Extraterrestrial Contact',
-      icon: '👽',
-      description: 'Pleiadians, Arcturians, Draconians & Reptilians: Understanding benevolent & challenging beings',
-      color: '#9D4EDD'
-    },
-    {
-      title: 'Plant Medicine & Entheogenic Journeys',
-      icon: '🍄',
-      description: 'Sacred plants, DMT, ayahuasca, and the geometry of expanded consciousness',
-      color: '#3A86FF'
-    },
-    {
-      title: 'Organic Living & Detoxification',
-      icon: '🌿',
-      description: 'Cleansing the physical temple: raw food, superfoods, and frequency-aligned nutrition',
-      color: '#06D6A0'
-    },
-    {
-      title: 'Sacred Geometry & Cosmic Codes',
-      icon: '✡️',
-      description: 'Flower of Life, Merkaba, and the mathematical blueprints of reality',
-      color: '#FB5607'
-    },
-    {
-      title: 'Ancient Wisdom & Cosmic Law',
-      icon: '📿',
-      description: 'Hermetic principles, karma, dharma, and universal consciousness',
-      color: '#FFBE0B'
-    }
-  ]
-
+// Knowledge Portal Topics Component with working links
+const KnowledgePortalSection = () => {
   return (
     <section style={{
       padding: '4rem 2rem',
@@ -83,7 +34,7 @@ const ConsciousnessTopics = () => {
             WebkitTextFillColor: 'transparent',
             marginBottom: '1rem'
           }}>
-            🔮 Consciousness Expansion Topics
+            🔮 Explore All Topics
           </h2>
           <p style={{
             color: '#94A3B8',
@@ -91,57 +42,84 @@ const ConsciousnessTopics = () => {
             maxWidth: '600px',
             margin: '0 auto'
           }}>
-            Deep dives into the technologies and wisdom that accelerate human and planetary evolution
+            {knowledgePortalTopics.length} deep dives into consciousness expansion, hidden knowledge, and spiritual awakening
           </p>
         </motion.div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '2rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem',
           marginTop: '2rem'
         }}>
-          {topics.map((topic, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              whileHover={{ y: -5, boxShadow: `0 0 18px ${topic.color}2A` }}
-              style={{
-                padding: '2rem',
-                background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.84) 0%, rgba(10, 10, 18, 0.84) 100%)',
-                border: `1px solid ${topic.color}55`,
-                borderRadius: '12px',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <div style={{
-                fontSize: '2.5rem',
-                marginBottom: '1rem',
-                textAlign: 'center'
-              }}>
-                {topic.icon}
-              </div>
-              <h3 style={{
-                color: topic.color,
-                fontSize: '1.3rem',
-                fontWeight: 'bold',
-                marginBottom: '0.8rem',
-                textAlign: 'center'
-              }}>
-                {topic.title}
-              </h3>
-              <p style={{
-                color: '#CBD5E1',
-                fontSize: '0.95rem',
-                lineHeight: '1.6',
-                textAlign: 'center'
-              }}>
-                {topic.description}
-              </p>
-            </motion.div>
+          {knowledgePortalTopics.map((topic, idx) => (
+            <Link key={topic.id} to={topic.path} style={{ textDecoration: 'none' }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                whileHover={{ y: -5, boxShadow: `0 0 25px ${topic.color}40` }}
+                style={{
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.84) 0%, rgba(10, 10, 18, 0.84) 100%)',
+                  border: `1px solid ${topic.color}55`,
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  height: '100%'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  marginBottom: '0.75rem'
+                }}>
+                  <span style={{ fontSize: '2rem' }}>{topic.icon}</span>
+                  <h3 style={{
+                    color: topic.color,
+                    fontSize: '1.1rem',
+                    fontWeight: 'bold',
+                    margin: 0
+                  }}>
+                    {topic.title}
+                  </h3>
+                </div>
+                <p style={{
+                  color: '#94A3B8',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  margin: 0
+                }}>
+                  {topic.description}
+                </p>
+                <div style={{
+                  display: 'flex',
+                  gap: '0.5rem',
+                  marginTop: '0.75rem',
+                  flexWrap: 'wrap'
+                }}>
+                  <span style={{
+                    fontSize: '0.7rem',
+                    padding: '0.2rem 0.5rem',
+                    background: `${topic.color}20`,
+                    color: topic.color,
+                    borderRadius: '4px'
+                  }}>
+                    {topic.category}
+                  </span>
+                  <span style={{
+                    fontSize: '0.7rem',
+                    padding: '0.2rem 0.5rem',
+                    background: 'rgba(255,255,255,0.1)',
+                    color: '#9CA3AF',
+                    borderRadius: '4px'
+                  }}>
+                    {topic.articles} articles
+                  </span>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
@@ -178,8 +156,8 @@ const Knowledge = () => {
         activeCategory={activeCategory}
       />
       
-      {/* Consciousness Expansion Topics Section */}
-      <ConsciousnessTopics />
+      {/* Knowledge Portal Topics Section */}
+      <KnowledgePortalSection />
     </motion.div>
   )
 }
