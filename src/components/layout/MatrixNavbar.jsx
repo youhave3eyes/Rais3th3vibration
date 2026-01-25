@@ -337,8 +337,12 @@ const MatrixNavbar = () => {
           style={{
             marginTop: '1rem',
             padding: '2rem',
-            background: 'rgba(0, 0, 0, 0.95)',
-            borderRadius: '10px'
+            background: 'linear-gradient(135deg, rgba(10, 0, 20, 0.98) 0%, rgba(20, 10, 40, 0.98) 100%)',
+            borderRadius: '10px',
+            border: '1px solid rgba(157, 78, 221, 0.4)',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(157, 78, 221, 0.2)',
+            position: 'relative',
+            zIndex: 1000
           }}
         >
           {[...primaryNavItems, ...moreNavItems].map((item, index) => (
@@ -351,24 +355,28 @@ const MatrixNavbar = () => {
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className={isActive(item.path) ? 'neon-text' : 'rabbit-hole'}
+                transition={{ delay: index * 0.05 }}
+                whileTap={{ scale: 0.98 }}
                 style={{
-                  fontSize: '1.2rem',
+                  fontSize: '1.1rem',
                   fontWeight: 'bold',
                   padding: '1rem',
                   border: isActive(item.path) 
-                    ? '2px solid var(--matrix-green)' 
-                    : '1px solid rgba(0, 255, 65, 0.3)',
-                  borderRadius: '5px',
+                    ? '2px solid #9D4EDD' 
+                    : '1px solid rgba(157, 78, 221, 0.3)',
+                  borderRadius: '8px',
                   textAlign: 'center',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '0.5rem'
+                  gap: '0.75rem',
+                  background: isActive(item.path) 
+                    ? 'rgba(157, 78, 221, 0.2)' 
+                    : 'rgba(157, 78, 221, 0.05)',
+                  color: isActive(item.path) ? '#C77DFF' : '#E5E7EB'
                 }}
               >
-                <span>{item.icon}</span>
+                <span style={{ fontSize: '1.3rem' }}>{item.icon}</span>
                 <span>{item.label}</span>
               </motion.div>
             </Link>
